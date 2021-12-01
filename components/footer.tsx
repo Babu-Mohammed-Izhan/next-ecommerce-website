@@ -204,14 +204,14 @@ const Footer = () => {
       "
         >
           <p className="text-gray-500 text-sm text-center sm:text-left">
-            © 2021 Copyright:
+            Made By
             <a
-              href="https://www.tailwind-elements.com/"
-              className="text-gray-600 ml-1"
+              href="https://babumohammedizhan.netlify.app/"
+              className="text-purple-500 ml-1 font-bold"
               target="_blank"
               rel="noreferrer"
             >
-              Tailwind Elements
+              Babu Mohammed Izhan
             </a>
           </p>
           <span

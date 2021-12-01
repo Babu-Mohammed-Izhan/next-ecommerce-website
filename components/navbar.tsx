@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Navbar = () => {
   return (
     <nav className="bg-white shadow dark:bg-gray-800">
@@ -12,8 +14,9 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between">
           <div>
-            <a
-              className="
+            <Link href="/">
+              <a
+                className="
             text-xl
             font-bold
             text-gray-800
@@ -22,10 +25,10 @@ const Navbar = () => {
             hover:text-gray-700
             dark:hover:text-gray-300
           "
-              href="#"
-            >
-              Casey
-            </a>
+              >
+                Casey
+              </a>
+            </Link>
           </div>
 
           <div className="flex md:hidden">
@@ -53,8 +56,9 @@ const Navbar = () => {
 
         <div className="items-center md:flex">
           <div className="flex flex-col md:flex-row md:mx-6">
-            <a
-              className="
+            <Link href="/">
+              <a
+                className="
             my-1
             text-gray-700
             dark:text-gray-200
@@ -62,12 +66,14 @@ const Navbar = () => {
             dark:hover:text-indigo-400
             md:mx-4 md:my-0
           "
-              href="#"
-            >
-              Home
-            </a>
-            <a
-              className="
+              >
+                Home
+              </a>
+            </Link>
+
+            <Link href="/shop">
+              <a
+                className="
             my-1
             text-gray-700
             dark:text-gray-200
@@ -75,12 +81,14 @@ const Navbar = () => {
             dark:hover:text-indigo-400
             md:mx-4 md:my-0
           "
-              href="#"
-            >
-              Shop
-            </a>
-            <a
-              className="
+                href="#"
+              >
+                Shop
+              </a>
+            </Link>
+            <Link href="/contact">
+              <a
+                className="
             my-1
             text-gray-700
             dark:text-gray-200
@@ -88,12 +96,13 @@ const Navbar = () => {
             dark:hover:text-indigo-400
             md:mx-4 md:my-0
           "
-              href="#"
-            >
-              Contact
-            </a>
-            <a
-              className="
+              >
+                Contact
+              </a>
+            </Link>
+            <Link href="/about">
+              <a
+                className="
             my-1
             text-gray-700
             dark:text-gray-200
@@ -101,25 +110,36 @@ const Navbar = () => {
             dark:hover:text-indigo-400
             md:mx-4 md:my-0
           "
-              href="#"
-            >
-              About
-            </a>
+              >
+                About
+              </a>
+            </Link>
           </div>
 
           <div className="flex justify-center md:block">
-            <a
-              className="
+            <Link href="/cart">
+              <a
+                className="
             relative
             text-gray-700
             dark:text-gray-200
             hover:text-gray-600
             dark:hover:text-gray-300
           "
-              href="#"
-            >
-              <span
-                className="
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                <span
+                  className="
               absolute
               top-0
               left-0
@@ -128,8 +148,9 @@ const Navbar = () => {
               bg-indigo-500
               rounded-full
             "
-              ></span>
-            </a>
+                ></span>
+              </a>
+            </Link>
           </div>
         </div>
       </div>
