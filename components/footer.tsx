@@ -1,4 +1,44 @@
+import Link from "next/link";
 const Footer = () => {
+  const arr = [
+    {
+      title: "CATEGORIES",
+      links: [
+        { name: "Anime", link: "/" },
+        { name: "SuperHeroes", link: "/" },
+        { name: "Abstract", link: "/" },
+        { name: "Shades", link: "/" },
+      ],
+    },
+    {
+      title: "QUERIES",
+      links: [
+        { name: "Customer Support", link: "#" },
+        { name: "About", link: "#" },
+        { name: "Members", link: "#" },
+        { name: "Career", link: "#" },
+      ],
+    },
+    {
+      title: "TOOLS USED",
+      links: [
+        { name: "Nextjs", link: "#" },
+        { name: "Tailwind", link: "#" },
+        { name: "Shopify", link: "#" },
+        { name: "Stripe", link: "#" },
+      ],
+    },
+    {
+      title: "SOCIALS",
+      links: [
+        { name: "Twitter", link: "#" },
+        { name: "GitHub", link: "#" },
+        { name: "LinkedIn", link: "#" },
+        { name: "Instagram", link: "#" },
+      ],
+    },
+  ];
+
   return (
     <footer className="text-gray-600 body-font">
       <div
@@ -46,9 +86,11 @@ const Footer = () => {
         text-center
       "
         >
-          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2
-              className="
+          {arr.map((a) => {
+            return (
+              <div key={a.title} className="lg:w-1/4 md:w-1/2 w-full px-4">
+                <h2
+                  className="
             title-font
             font-medium
             text-gray-900
@@ -56,140 +98,26 @@ const Footer = () => {
             text-sm
             mb-3
           "
-            >
-              CATEGORIES
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  First Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Second Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Fourth Link
-                </a>
-              </li>
-            </nav>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2
-              className="
-            title-font
-            font-medium
-            text-gray-900
-            tracking-widest
-            text-sm
-            mb-3
-          "
-            >
-              CATEGORIES
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  First Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Second Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Fourth Link
-                </a>
-              </li>
-            </nav>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2
-              className="
-            title-font
-            font-medium
-            text-gray-900
-            tracking-widest
-            text-sm
-            mb-3
-          "
-            >
-              CATEGORIES
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  First Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Second Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Fourth Link
-                </a>
-              </li>
-            </nav>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2
-              className="
-            title-font
-            font-medium
-            text-gray-900
-            tracking-widest
-            text-sm
-            mb-3
-          "
-            >
-              CATEGORIES
-            </h2>
-            <nav className="list-none mb-10">
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  First Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Second Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Third Link
-                </a>
-              </li>
-              <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">
-                  Fourth Link
-                </a>
-              </li>
-            </nav>
-          </div>
+                >
+                  {a.title}
+                </h2>
+                <nav className="list-none mb-10">
+                  {a &&
+                    a.links.map((l) => {
+                      return (
+                        <Link href={l.link} key={l.name} passHref>
+                          <li>
+                            <a className="text-gray-600 hover:text-gray-800">
+                              {l.name}
+                            </a>
+                          </li>
+                        </Link>
+                      );
+                    })}
+                </nav>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="bg-gray-100">
@@ -214,31 +142,6 @@ const Footer = () => {
               Babu Mohammed Izhan
             </a>
           </p>
-          <span
-            className="
-          inline-flex
-          sm:ml-auto sm:mt-0
-          mt-2
-          justify-center
-          sm:justify-start
-        "
-          >
-            <a href="" className="text-gray-500">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="" className="ml-3 text-gray-500">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="" className="ml-3 text-gray-500">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a href="" className="ml-3 text-gray-500">
-              <i className="fab fa-youtube"></i>
-            </a>
-            <a href="" className="ml-3 text-gray-500">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </span>
         </div>
       </div>
     </footer>

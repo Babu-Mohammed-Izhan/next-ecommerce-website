@@ -81,7 +81,6 @@ const Navbar = () => {
             dark:hover:text-indigo-400
             md:mx-4 md:my-0
           "
-                href="#"
               >
                 Shop
               </a>
