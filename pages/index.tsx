@@ -121,7 +121,10 @@ const Home: NextPage = () => {
             data.map((d) => {
               return (
                 <>
-                  <h3 className="text-gray-600 text-2xl font-medium">
+                  <h3
+                    key={d.title}
+                    className="text-gray-600 text-2xl font-medium"
+                  >
                     {d.title}
                   </h3>
                   <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
