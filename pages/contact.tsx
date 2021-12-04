@@ -11,7 +11,7 @@ const Contact = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 mt-20 shadow-2xl rounded">
-        <div className=" py-14 bg-purple-500 text-gray-100 rounded ">
+        <div className=" py-14 bg-gradient-to-br from-blue-500 to-purple-500 text-gray-100 rounded ">
           <div className="w-11/12 mx-auto">
             <h3 className="text-3xl pb-7">Contact Information</h3>
             <p className="py-5">
