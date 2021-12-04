@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [hidden, setHidden] = useState(true);
+
+  const handleToggle = () => {
+    setHidden(!hidden);
+  };
   return (
     <nav className="bg-white shadow dark:bg-gray-800">
       <div
@@ -43,6 +49,7 @@ const Navbar = () => {
             dark:focus:text-gray-400
           "
               aria-label="toggle menu"
+              onClick={() => handleToggle()}
             >
               <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
                 <path
@@ -54,12 +61,12 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="items-center md:flex">
+        <div className={`items-center md:flex ${hidden ? "hidden" : ""}`}>
           <div className="flex flex-col md:flex-row md:mx-6">
             <Link href="/">
               <a
                 className="
-            my-1
+            my-2
             text-gray-700
             dark:text-gray-200
             hover:text-indigo-500
@@ -74,7 +81,7 @@ const Navbar = () => {
             <Link href="/shop">
               <a
                 className="
-            my-1
+                my-2
             text-gray-700
             dark:text-gray-200
             hover:text-indigo-500
@@ -88,7 +95,7 @@ const Navbar = () => {
             <Link href="/contact">
               <a
                 className="
-            my-1
+                my-2
             text-gray-700
             dark:text-gray-200
             hover:text-indigo-500
@@ -102,7 +109,7 @@ const Navbar = () => {
             <Link href="/about">
               <a
                 className="
-            my-1
+                my-2
             text-gray-700
             dark:text-gray-200
             hover:text-indigo-500
@@ -115,15 +122,17 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex justify-center md:block">
+          <div className="flex justify-start md:block">
             <Link href="/cart">
               <a
                 className="
+                my-2
             relative
             text-gray-700
             dark:text-gray-200
             hover:text-gray-600
             dark:hover:text-gray-300
+            md:my-0
           "
               >
                 <svg
