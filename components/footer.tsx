@@ -107,7 +107,7 @@ const Footer = () => {
                       return (
                         <Link href={l.link} key={l.name} passHref>
                           <li>
-                            <a className="text-gray-600 hover:text-gray-800">
+                            <a className="text-gray-600 hover:text-gray-800 cursor-pointer">
                               {l.name}
                             </a>
                           </li>
