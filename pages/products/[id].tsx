@@ -1,11 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Card from "../../components/card";
-
-interface Product {
-  name: string;
-  price: number;
-}
+import { Product } from "../../types";
 
 interface ProductProps {
   name: string;

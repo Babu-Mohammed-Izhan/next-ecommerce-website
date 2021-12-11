@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
-import cardReducer from "../features/cart/cartSlice";
+import cartReducer from "../features/cart/cartSlice";
 
 export function makeStore() {
   return configureStore({
-    reducer: { card: cardReducer },
+    reducer: { cart: cartReducer },
   });
 }
 
