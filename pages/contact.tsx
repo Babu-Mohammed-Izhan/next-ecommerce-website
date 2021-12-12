@@ -1,9 +1,9 @@
 const Contact = () => {
   return (
-    <div className="container w-4/5 mx-auto mt-20">
+    <div className="container w-11/12 mx-auto md:mt-20">
       <div className="flex items-start justify-center flex-col">
         <h1 className="text-6xl font-bold py-6">Get in touch</h1>
-        <p className="pb-3 pr-64 text-gray-500">
+        <p className="pb-3 md:pr-64 text-gray-500">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi
           hic voluptatum enim quidem doloremque nobis magni distinctio quia
           possimus sapiente? Similique labore maxime nemo natus saepe.
@@ -24,10 +24,10 @@ const Contact = () => {
             <p className="py-4">Email: babuizhan1234@gmail.com</p>
           </div>
         </div>
-        <div className="w-11/12 mx-auto h-full grid py-14 ">
+        <div className="w-11/12 mx-auto h-full grid py-14 px-3">
           <h1 className="text-2xl font-semibold pb-6">Send us a Message</h1>
           <form>
-            <div className="grid grid-cols-2 gap-x-6 pb-4">
+            <div className="grid grid-cols-2 gap-x-6 pb-4 w-10/12 md:w-full">
               <div className="flex flex-col">
                 <label
                   htmlFor="firstname"
@@ -57,7 +57,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-x-6  pb-4">
+            <div className="grid grid-cols-2 gap-x-6 pb-4 w-10/12 md:w-full">
               <div className="flex flex-col ">
                 <label htmlFor="email" className=" text-lg font-semibold pb-2">
                   Email
@@ -81,7 +81,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-col  pb-4">
+            <div className="flex flex-col pb-4 w-10/12 md:w-full">
               <label htmlFor="subject" className="text-lg font-semibold pb-2">
                 Subject
               </label>
@@ -92,7 +92,7 @@ const Contact = () => {
                 className="border-gray-300 border-solid border-2 rounded  py-1 px-2"
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-10/12 md:w-full">
               <label htmlFor="message" className="text-lg font-semibold pb-2">
                 Message
               </label>

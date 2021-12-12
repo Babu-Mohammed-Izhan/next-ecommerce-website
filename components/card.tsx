@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-interface cardData {
+export interface cardData {
   data: {
     name: string;
     price: number;
@@ -17,7 +17,7 @@ const Card = ({ data }: cardData) => {
     >
       <div className="flex items-end justify-end h-56 w-full bg-cover">
         <button
-          className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+          className="p-2 rounded-full bg-purple-600 text-white mx-5 -mb-4 hover:bg-purple-500 focus:outline-none focus:bg-purple-500"
           onClick={() => router.push(`/products/${data.name}`)}
         >
           <svg

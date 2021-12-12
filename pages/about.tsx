@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div className="w-10/12 mx-auto flex flex-col justify-start items-center">
+    <div className="w-10/12 mx-auto flex flex-col justify-start items-center md:py-20">
       <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl my-12">
         Welcome to{" "}
         <strong className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">

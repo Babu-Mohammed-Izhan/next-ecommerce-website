@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { AppState } from "../../app/store";
-import { Product } from "../../types";
+import { CartProduct } from "../../types";
 
 export interface CartState {
-  cart: Product[];
+  cart: CartProduct[];
 }
 
 const initialState: CartState = {
@@ -14,10 +14,10 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProduct: (state, action: PayloadAction<Product>) => {
+    addProduct: (state, action: PayloadAction<CartProduct>) => {
       state.cart.concat(action.payload);
     },
-    removeProduct: (state, action: PayloadAction<Product>) => {
+    removeProduct: (state, action: PayloadAction<CartProduct>) => {
       state.cart.filter((p) => p.name !== action.payload.name);
     },
   },
