@@ -7,6 +7,9 @@ import { CartProduct } from "../types";
 const Cart = () => {
   const cart = useAppSelector(selectCart);
   const cartArray = cart.cart;
+  console.log(cartArray);
+
+  const handleCheckout = () => {};
 
   return (
     <div className="p-4 px-5 py-5 w-11/12 m-auto ">
@@ -34,11 +37,15 @@ const Cart = () => {
                     Subtotal:
                   </span>{" "}
                   <span className="text-lg font-bold text-gray-800 ">
-                    {" "}
-                    $24.90
+                    {cartArray
+                      .map((a) => a.price * a.amount)
+                      .reduce((t, c) => c + t)}
                   </span>{" "}
                 </div>
-                <button className="mt-4 h-8 w-full bg-purple-500 rounded focus:outline-none text-white hover:bg-purple-600">
+                <button
+                  className="mt-4 h-8 w-full bg-purple-500 rounded focus:outline-none text-white hover:bg-purple-600"
+                  onClick={() => handleCheckout()}
+                >
                   Check Out
                 </button>
               </div>
