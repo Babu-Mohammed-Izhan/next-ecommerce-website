@@ -36,7 +36,7 @@ const Home: NextPage = () => {
           <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
             <div className="px-10 max-w-xl">
               <h2 className="text-4xl text-white font-semibold">Hard Cover</h2>
-              <p className="mt-2 text-gray-400">
+              <p className="mt-2 text-gray-300">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Tempore facere provident molestias ipsam sint voluptatum
                 pariatur.
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
                 <h2 className="text-2xl text-white font-semibold">
                   Anime Cases
                 </h2>
-                <p className="mt-2 text-gray-400">
+                <p className="mt-2 text-gray-300">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Tempore facere provident molestias ipsam sint voluptatum
                   pariatur.
@@ -100,7 +100,7 @@ const Home: NextPage = () => {
                 <h2 className="text-2xl text-white font-semibold">
                   Super Hero Cases
                 </h2>
-                <p className="mt-2 text-gray-400">
+                <p className="mt-2 text-gray-300">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Tempore facere provident molestias ipsam sint voluptatum
                   pariatur.
