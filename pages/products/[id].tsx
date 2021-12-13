@@ -14,6 +14,7 @@ interface ProductProps {
 
 const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
   const [amount, setAmount] = useState(1);
+  const [phone, setPhone] = useState("");
 
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -23,15 +24,38 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
     router.push("/cart");
   };
 
+  const handleModel = (e: any) => {
+    e.preventDefault();
+    setPhone(e.target.value);
+  };
+
   const handleAddtoCart = () => {
     dispatch(
       addProduct({
         name,
         price,
         amount,
+        phone,
       })
     );
   };
+
+  const modelArray = [
+    "realme 1",
+    "realme 2",
+    "realme 3",
+    "realme 4",
+    "realme 5",
+    "realme 6",
+    "realme 7",
+    "realme 8",
+    "realme 9",
+    "realme 8i",
+    "realme 7i",
+    "realme 6i",
+    "realme 5i",
+    "realme 4i",
+  ];
 
   return (
     <main className="my-8">
@@ -92,13 +116,17 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
             </div>
             <div className="mt-3">
               <label className="text-gray-700 text-sm" htmlFor="count">
-                Color:
+                Phone Model :
               </label>
-              <div className="flex items-center mt-1">
-                <button className="h-5 w-5 rounded-full bg-blue-600 border-2 border-blue-200 mr-2 focus:outline-none"></button>
-                <button className="h-5 w-5 rounded-full bg-teal-600 mr-2 focus:outline-none"></button>
-                <button className="h-5 w-5 rounded-full bg-pink-600 mr-2 focus:outline-none"></button>
-              </div>
+              <select name="model" id="model" onChange={handleModel}>
+                {modelArray.map((m) => {
+                  return (
+                    <option key={m} value={m}>
+                      {m}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
             <div className="flex items-center mt-6">
               <button

@@ -17,6 +17,7 @@ const Cartcard = ({ data }: cartCardType) => {
         name: data.name,
         price: data.price,
         amount: data.amount,
+        phone: data.phone,
       })
     );
   };
@@ -33,8 +34,8 @@ const Cartcard = ({ data }: cartCardType) => {
           alt="product"
         />
         <div className="flex flex-col ml-3">
-          {" "}
           <span className="md:text-md font-medium">{data.name}</span>{" "}
+          <span className="md:text-md font-medium px-4">{data.phone}</span>{" "}
         </div>
       </div>
       <div className="flex justify-center items-center">
