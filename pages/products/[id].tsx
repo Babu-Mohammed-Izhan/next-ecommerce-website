@@ -140,10 +140,9 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
 };
 
 export async function getStaticProps(context: any) {
-  console.log(context);
   return {
     props: {
-      name: "JJK",
+      name: `${context.params.id}`,
       price: 12,
       moreProducts: [
         { name: "Demon Slayer", price: 12 },
@@ -157,11 +156,8 @@ export async function getStaticProps(context: any) {
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { id: "1" } },
-      { params: { id: "2" } }, // See the "paths" section below
-    ],
-    fallback: true, // See the "fallback" section below
+    paths: [{ params: { id: "1" } }, { params: { id: "2" } }],
+    fallback: true,
   };
 }
 export default ProductPage;
