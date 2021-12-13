@@ -2,6 +2,9 @@ import Image from "next/image";
 import { useState } from "react";
 import Card from "../../components/card";
 import { Product } from "../../types";
+import { useAppDispatch } from "../../app/hook";
+import { addProduct } from "../../features/cart/cartSlice";
+import { useRouter } from "next/router";
 
 interface ProductProps {
   name: string;
@@ -11,6 +14,24 @@ interface ProductProps {
 
 const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
   const [amount, setAmount] = useState(1);
+
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const handleOrder = () => {
+    handleAddtoCart();
+    router.push("/cart");
+  };
+
+  const handleAddtoCart = () => {
+    dispatch(
+      addProduct({
+        name,
+        price,
+        amount,
+      })
+    );
+  };
 
   return (
     <main className="my-8">
@@ -80,10 +101,16 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
               </div>
             </div>
             <div className="flex items-center mt-6">
-              <button className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+              <button
+                className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                onClick={() => handleOrder()}
+              >
                 Order Now
               </button>
-              <button className="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none">
+              <button
+                className="mx-2 text-gray-600 border rounded-md p-2 hover:bg-gray-200 focus:outline-none"
+                onClick={() => handleAddtoCart()}
+              >
                 <svg
                   className="h-5 w-5"
                   fill="none"

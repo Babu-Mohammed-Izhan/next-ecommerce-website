@@ -26,13 +26,16 @@ const Navbar = () => {
             <Link href="/">
               <a
                 className="
+                bg-clip-text text-transparent
+                 bg-gradient-to-r 
+                 from-blue-500 
+                 to-purple-500
             text-xl
             font-bold
-            text-gray-800
             dark:text-white
             md:text-2xl
-            hover:text-gray-700
-            dark:hover:text-gray-300
+            hover:to-purple-400
+            hover:from-blue-400
           "
               >
                 Casey
@@ -139,7 +142,7 @@ const Navbar = () => {
           "
               >
                 <svg
-                  className="h-5 w-5"
+                  className="h-6 w-6"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -155,13 +158,13 @@ const Navbar = () => {
               absolute
               top-0
               left-0
-              p-1
-              text-xs text-white
+              px-1
+              text-[10px] text-white
               bg-indigo-500
               rounded-full
             "
                   >
-                    cart.cart.length
+                    {cart.cart.length}
                   </span>
                 ) : null}
               </a>

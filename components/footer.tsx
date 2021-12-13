@@ -55,21 +55,20 @@ const Footer = () => {
     "
       >
         <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-          <a
-            href=""
-            className="
-          flex
-          title-font
-          font-medium
-          items-center
-          md:justify-start
-          justify-center
-          text-gray-900
-        "
-          >
-            <i className="fas fa-cubes fa-lg text-purple-500"></i>
-            <span className="ml-3 text-xl">Casey</span>
-          </a>
+          <Link href="/" passHref>
+            <span
+              className=" bg-clip-text text-transparent
+                 bg-gradient-to-r 
+                 from-blue-500 
+                 to-purple-500
+                  text-3xl
+                 cursor-pointer
+                 font-semibold
+                 "
+            >
+              Casey
+            </span>
+          </Link>
           <p className="mt-2 text-sm text-gray-500">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
             quam?

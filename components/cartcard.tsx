@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { CartProduct } from "../types";
+import { useAppDispatch } from "../app/hook";
+import { removeProduct } from "../features/cart/cartSlice";
 
 interface cartCardType {
   data: CartProduct;
@@ -7,6 +9,18 @@ interface cartCardType {
 }
 
 const Cartcard = ({ data }: cartCardType) => {
+  const dispatch = useAppDispatch();
+
+  const handleDelete = () => {
+    dispatch(
+      removeProduct({
+        name: data.name,
+        price: data.price,
+        amount: data.amount,
+      })
+    );
+  };
+
   return (
     <div className="flex justify-between items-center mt-6 pt-6">
       <div className="flex items-center">
@@ -24,23 +38,21 @@ const Cartcard = ({ data }: cartCardType) => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <div className="pr-8 flex ">
-          {" "}
-          <span className="font-semibold">-</span>{" "}
-          <input
-            type="text"
-            className="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2"
-            value={data.amount}
-          />{" "}
-          <span className="font-semibold">+</span>{" "}
-        </div>
+        <div className="pr-8 flex ">{data.amount}</div>
         <div className="pr-8 ">
           {" "}
-          <span className="text-xs font-medium">$ {data.price}</span>{" "}
+          <span className="text-xs font-medium">
+            $ {data.price * data.amount}
+          </span>{" "}
         </div>
         <div>
           {" "}
-          <i className="fa fa-close text-xs font-medium"></i>{" "}
+          <button
+            className="fa fa-close text-xs font-medium"
+            onClick={() => handleDelete()}
+          >
+            Delete
+          </button>{" "}
         </div>
       </div>
     </div>

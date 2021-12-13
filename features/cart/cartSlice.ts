@@ -15,10 +15,10 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action: PayloadAction<CartProduct>) => {
-      state.cart.concat(action.payload);
+      state.cart = [...state.cart, action.payload];
     },
     removeProduct: (state, action: PayloadAction<CartProduct>) => {
-      state.cart.filter((p) => p.name !== action.payload.name);
+      state.cart = state.cart.filter((p) => p.name !== action.payload.name);
     },
   },
 });
