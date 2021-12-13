@@ -52,7 +52,16 @@ const Cart = () => {
             </div>
           </div>
         ) : (
-          <></>
+          <div>
+            <div className="flex items-center justify-center flex-col py-10">
+              <h1 className="lg:text-6xl text-center font-bold py-6 text-4xl ">
+                Shopping Cart is Empty
+              </h1>
+              <p className="pb-3 text-center w-5/6 lg:w-3/5 text-gray-500">
+                Your shopping cart is empty. Continue shopping for more cases.
+              </p>
+            </div>
+          </div>
         )}
       </div>
     </div>
