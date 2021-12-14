@@ -1,11 +1,25 @@
-export interface CartProduct {
-  name: string;
-  price: number;
-  amount: number;
-  phone: string;
+interface priceRange {
+  maxVariantPrice: {
+    amount: string;
+  };
+}
+
+export interface CardProduct {
+  data: {
+    node: {
+      title: string;
+      id: string;
+      handle: string;
+      priceRange: priceRange;
+    };
+  };
 }
 
 export interface Product {
-  name: string;
-  price: number;
+  node: {
+    title: string;
+    id: string;
+    handle: string;
+    priceRange: priceRange;
+  };
 }

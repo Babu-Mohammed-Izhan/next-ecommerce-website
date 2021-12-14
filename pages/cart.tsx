@@ -2,7 +2,7 @@ import { selectCart } from "../features/cart/cartSlice";
 import { useAppSelector } from "../app/hook";
 import Cartcard from "../components/cartcard";
 import Link from "next/link";
-import { CartProduct } from "../types";
+import { Product } from "../types";
 
 const Cart = () => {
   const cart = useAppSelector(selectCart);
@@ -17,8 +17,8 @@ const Cart = () => {
         <h1 className="text-2xl font-medium ">Shopping Cart</h1>
         {cartArray.length > 0 ? (
           <div className=" p-5">
-            {cartArray.map((p: CartProduct) => {
-              return <Cartcard data={p} key={p.name} />;
+            {cartArray.map((p: Product) => {
+              return <Cartcard data={p} key={p.node.title} />;
             })}
             <div className="flex justify-between items-center mt-6 pt-6 border-t">
               <div className="flex items-center">
@@ -38,7 +38,11 @@ const Cart = () => {
                   </span>{" "}
                   <span className="text-lg font-bold text-gray-800 ">
                     {cartArray
-                      .map((a) => a.price * a.amount)
+                      .map(
+                        (a) =>
+                          Number(a.node.priceRange.maxVariantPrice.amount) *
+                          Number(a.node.priceRange.maxVariantPrice.amount)
+                      )
                       .reduce((t, c) => c + t)}
                   </span>{" "}
                 </div>

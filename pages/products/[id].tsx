@@ -3,8 +3,9 @@ import { useState } from "react";
 import Card from "../../components/card";
 import { Product } from "../../types";
 import { useAppDispatch } from "../../app/hook";
-import { addProduct } from "../../features/cart/cartSlice";
+import { addProduct, CartState } from "../../features/cart/cartSlice";
 import { useRouter } from "next/router";
+import { getAllProducts } from "../../shopify/shopify";
 
 interface ProductProps {
   name: string;
@@ -30,14 +31,14 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
   };
 
   const handleAddtoCart = () => {
-    dispatch(
-      addProduct({
-        name,
-        price,
-        amount,
-        phone,
-      })
-    );
+    // dispatch(
+    //   addProduct({
+    //     name,
+    //     price,
+    //     amount,
+    //     phone,
+    //   })
+    // );
   };
 
   const modelArray = [
@@ -157,9 +158,10 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
         <div className="mt-16">
           <h3 className="text-gray-600 text-2xl font-medium">More Products</h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-            {moreProducts.map((p: Product) => {
-              return <Card key={p.name} data={p} />;
-            })}
+            {moreProducts &&
+              moreProducts.map((p: Product) => {
+                return <Card key={p.node.id} data={p} />;
+              })}
           </div>
         </div>
       </div>
@@ -168,16 +170,15 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
 };
 
 export async function getStaticProps(context: any) {
+  const data: Product[] = await getAllProducts();
+
+  const caseData = data.find((d: Product) => d.node.id === context.params.id);
+
   return {
     props: {
-      name: `${context.params.id}`,
-      price: 12,
-      moreProducts: [
-        { name: "Demon Slayer", price: 12 },
-        { name: "JJK", price: 12 },
-        { name: "Naruto", price: 12 },
-        { name: "Jojo", price: 12 },
-      ],
+      name: `${caseData ? caseData.node.title : "Undefined"}`,
+      price: caseData ? caseData.node.priceRange.maxVariantPrice.amount : 20,
+      moreProducts: data,
     },
   };
 }
