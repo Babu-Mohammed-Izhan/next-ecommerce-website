@@ -8,12 +8,11 @@ import { useRouter } from "next/router";
 import { getAllProducts } from "../../shopify/shopify";
 
 interface ProductProps {
-  name: string;
-  price: number;
+  product: Product;
   moreProducts: Product[];
 }
 
-const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
+const ProductPage = ({ product, moreProducts }: ProductProps) => {
   const [amount, setAmount] = useState(1);
   const [phone, setPhone] = useState("");
 
@@ -31,14 +30,12 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
   };
 
   const handleAddtoCart = () => {
-    // dispatch(
-    //   addProduct({
-    //     name,
-    //     price,
-    //     amount,
-    //     phone,
-    //   })
-    // );
+    dispatch(
+      addProduct({
+        ...product,
+        amount: amount,
+      })
+    );
   };
 
   const modelArray = [
@@ -72,8 +69,12 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
             /> */}
           </div>
           <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
-            <h3 className="text-gray-700 uppercase text-lg">{name}</h3>
-            <span className="text-gray-500 mt-3">$ {price}</span>
+            <h3 className="text-gray-700 uppercase text-lg">
+              {product?.node.title}
+            </h3>
+            <span className="text-gray-500 mt-3">
+              $ {product?.node.priceRange.maxVariantPrice.amount}
+            </span>
             <hr className="my-3" />
             <div className="mt-2">
               <label className="text-gray-700 text-sm" htmlFor="count">
@@ -176,16 +177,27 @@ export async function getStaticProps(context: any) {
 
   return {
     props: {
-      name: `${caseData ? caseData.node.title : "Undefined"}`,
-      price: caseData ? caseData.node.priceRange.maxVariantPrice.amount : 20,
+      product: caseData ? caseData : "",
       moreProducts: data,
     },
   };
 }
 
 export async function getStaticPaths() {
+  const data: Product[] = await getAllProducts();
+
+  const paths =
+    data &&
+    data.map((d) => {
+      return {
+        params: {
+          id: d.node.id,
+        },
+      };
+    });
+
   return {
-    paths: [{ params: { id: "1" } }, { params: { id: "2" } }],
+    paths,
     fallback: true,
   };
 }

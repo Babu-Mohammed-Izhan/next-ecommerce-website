@@ -14,10 +14,7 @@ const Cartcard = ({ data }: cartCardType) => {
   const handleDelete = () => {
     dispatch(
       removeProduct({
-        name: data.name,
-        price: data.price,
-        amount: data.amount,
-        phone: data.phone,
+        ...data,
       })
     );
   };
@@ -34,8 +31,10 @@ const Cartcard = ({ data }: cartCardType) => {
           alt="product"
         />
         <div className="flex flex-col ml-3">
-          <span className="md:text-md font-medium">{data.name}</span>{" "}
-          <span className="md:text-md font-medium px-4">{data.phone}</span>{" "}
+          <span className="md:text-md font-medium">{data.node.title}</span>{" "}
+          <span className="md:text-md font-medium px-4">
+            {data.node.handle}
+          </span>{" "}
         </div>
       </div>
       <div className="flex justify-center items-center">
@@ -43,7 +42,7 @@ const Cartcard = ({ data }: cartCardType) => {
         <div className="pr-8 ">
           {" "}
           <span className="text-xs font-medium">
-            $ {data.price * data.amount}
+            $ {data.node.priceRange.maxVariantPrice.amount}
           </span>{" "}
         </div>
         <div>

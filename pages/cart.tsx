@@ -2,7 +2,7 @@ import { selectCart } from "../features/cart/cartSlice";
 import { useAppSelector } from "../app/hook";
 import Cartcard from "../components/cartcard";
 import Link from "next/link";
-import { Product } from "../types";
+import { CartProduct } from "../types";
 
 const Cart = () => {
   const cart = useAppSelector(selectCart);
@@ -17,7 +17,7 @@ const Cart = () => {
         <h1 className="text-2xl font-medium ">Shopping Cart</h1>
         {cartArray.length > 0 ? (
           <div className=" p-5">
-            {cartArray.map((p: Product) => {
+            {cartArray.map((p: CartProduct) => {
               return <Cartcard data={p} key={p.node.title} />;
             })}
             <div className="flex justify-between items-center mt-6 pt-6 border-t">
@@ -37,11 +37,12 @@ const Cart = () => {
                     Subtotal:
                   </span>{" "}
                   <span className="text-lg font-bold text-gray-800 ">
+                    ${" "}
                     {cartArray
                       .map(
                         (a) =>
                           Number(a.node.priceRange.maxVariantPrice.amount) *
-                          Number(a.node.priceRange.maxVariantPrice.amount)
+                          Number(a.amount)
                       )
                       .reduce((t, c) => c + t)}
                   </span>{" "}

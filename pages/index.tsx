@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Card from "../components/card";
 import { getAllProducts } from "../shopify/shopify";
+import { Product } from "../types";
 
 const Home: NextPage = ({ moreProducts }: any) => {
   const data = [
@@ -127,8 +128,8 @@ const Home: NextPage = ({ moreProducts }: any) => {
                   </h3>
                   <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                     {d.products &&
-                      d.products.map((p: any) => {
-                        return <Card key={p.name} data={p} />;
+                      d.products.map((p: Product) => {
+                        return <Card key={p.node.id} data={p} />;
                       })}
                   </div>
                 </div>

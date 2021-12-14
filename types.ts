@@ -23,3 +23,13 @@ export interface Product {
     priceRange: priceRange;
   };
 }
+
+export interface CartProduct {
+  node: {
+    title: string;
+    id: string;
+    handle: string;
+    priceRange: priceRange;
+  };
+  amount: number;
+}
