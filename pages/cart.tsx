@@ -3,11 +3,13 @@ import { useAppSelector } from "../app/hook";
 import Cartcard from "../components/cartcard";
 import Link from "next/link";
 import { CartProduct } from "../types";
+import { useRouter } from "next/router";
 
 const Cart = () => {
   const cart = useAppSelector(selectCart);
   const cartArray = cart.cart;
   console.log(cartArray);
+  const router = useRouter();
 
   const handleCheckout = () => {};
 
