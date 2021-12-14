@@ -1,10 +1,10 @@
 async function ShopifyData(query: string) {
-  const URL = `https://${process.env.domain}/api/2021-07/graphql.json`;
+  const URL = `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2021-10/graphql.json`;
 
   const options = {
     method: "POST",
     headers: {
-      "X-Shopify-Storefront-Access-Token": `${process.env.storefrontAccessToken}`,
+      "X-Shopify-Storefront-Access-Token": `${process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN}`,
       Accept: "application/json",
       "Content-Type": "application/json",
     },
@@ -24,30 +24,23 @@ async function ShopifyData(query: string) {
 
 export async function getAllProducts() {
   const query = `
-    {
-    products(first: 25) {
+  {
+    products(first: 30) {
       edges {
         node {
           id
-          title
           handle
+          title
           priceRange {
-            minVariantPrice {
+            maxVariantPrice {
               amount
-            }
-          }
-          images(first: 5) {
-            edges {
-              node {
-                originalSrc
-                altText
-              }
             }
           }
         }
       }
     }
   }
+  
   `;
 
   const response = await ShopifyData(query);
@@ -57,4 +50,30 @@ export async function getAllProducts() {
     : [];
 
   return allProducts;
+}
+
+export async function createCheckout(
+  id: string,
+  quantity: number,
+  model: string
+) {
+  const query = `
+      mutation {
+        checkoutCreate(input: {
+          lineItems: [{ variantId: "${id}", quantity: ${quantity}, model: ${model}}]
+        }) {
+          checkout {
+            id
+            webUrl
+          }
+        }
+      }`;
+
+  const response = await ShopifyData(query);
+
+  const checkout = response.data.checkoutCreate.checkout
+    ? response.data.checkoutCreate.checkout
+    : [];
+
+  return checkout;
 }

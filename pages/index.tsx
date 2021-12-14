@@ -1,26 +1,17 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Card from "../components/card";
+import { getAllProducts } from "../shopify/shopify";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ moreProducts }: any) => {
   const data = [
     {
       title: "Anime",
-      products: [
-        { name: "Demon Slayer", price: 12 },
-        { name: "JJK", price: 12 },
-        { name: "Naruto", price: 12 },
-        { name: "Jojo", price: 12 },
-      ],
+      products: moreProducts,
     },
     {
       title: "Superhero",
-      products: [
-        { name: "SuperMan", price: 12 },
-        { name: "Batman", price: 12 },
-        { name: "Iron Man", price: 12 },
-        { name: "Captain America", price: 12 },
-      ],
+      products: moreProducts,
     },
   ];
   return (
@@ -136,7 +127,7 @@ const Home: NextPage = () => {
                   </h3>
                   <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                     {d.products &&
-                      d.products.map((p) => {
+                      d.products.map((p: any) => {
                         return <Card key={p.name} data={p} />;
                       })}
                   </div>
@@ -148,5 +139,16 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps(context: any) {
+  const data = await getAllProducts();
+  console.log(data);
+
+  return {
+    props: {
+      moreProducts: data,
+    },
+  };
+}
 
 export default Home;

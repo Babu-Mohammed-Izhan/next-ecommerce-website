@@ -1,9 +1,19 @@
 import { useRouter } from "next/router";
 
+interface priceRange {
+  maxVariantPrice: {
+    amount: string;
+  };
+}
+
 export interface cardData {
   data: {
-    name: string;
-    price: number;
+    node: {
+      title: string;
+      id: string;
+      handle: string;
+      priceRange: priceRange;
+    };
   };
 }
 
@@ -13,12 +23,12 @@ const Card = ({ data }: cardData) => {
   return (
     <div
       className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden mt-5"
-      key={data.name}
+      key={data.node.handle}
     >
       <div className="flex items-end justify-end h-56 w-full bg-cover">
         <button
           className="p-2 rounded-full bg-purple-600 text-white mx-5 -mb-4 hover:bg-purple-500 focus:outline-none focus:bg-purple-500"
-          onClick={() => router.push(`/products/${data.name}`)}
+          onClick={() => router.push(`/products/${data.node.id}`)}
         >
           <svg
             className="h-5 w-5"
@@ -34,8 +44,10 @@ const Card = ({ data }: cardData) => {
         </button>
       </div>
       <div className="px-5 py-3">
-        <h3 className="text-gray-700 uppercase">{data.name}</h3>
-        <span className="text-gray-500 mt-2">$ {data.price}</span>
+        <h3 className="text-gray-700 uppercase">{data.node.title}</h3>
+        <span className="text-gray-500 mt-2">
+          $ {data.node.priceRange.maxVariantPrice.amount}
+        </span>
       </div>
     </div>
   );

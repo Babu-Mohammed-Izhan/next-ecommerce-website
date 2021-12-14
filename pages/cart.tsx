@@ -18,7 +18,7 @@ const Cart = () => {
         {cartArray.length > 0 ? (
           <div className=" p-5">
             {cartArray.map((p: CartProduct) => {
-              return <Cartcard data={p} key={p.name} />;
+              return <Cartcard data={p} key={p.node.title} />;
             })}
             <div className="flex justify-between items-center mt-6 pt-6 border-t">
               <div className="flex items-center">
@@ -38,7 +38,11 @@ const Cart = () => {
                   </span>{" "}
                   <span className="text-lg font-bold text-gray-800 ">
                     {cartArray
-                      .map((a) => a.price * a.amount)
+                      .map(
+                        (a) =>
+                          Number(a.node.priceRange.maxVariantPrice.amount) *
+                          Number(a.node.priceRange.maxVariantPrice.amount)
+                      )
                       .reduce((t, c) => c + t)}
                   </span>{" "}
                 </div>

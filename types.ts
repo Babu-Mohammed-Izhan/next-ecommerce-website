@@ -1,8 +1,16 @@
+interface priceRange {
+  maxVariantPrice: {
+    amount: string;
+  };
+}
+
 export interface CartProduct {
-  name: string;
-  price: number;
-  amount: number;
-  phone: string;
+  node: {
+    title: string;
+    id: string;
+    handle: string;
+    priceRange: priceRange;
+  };
 }
 
 export interface Product {
