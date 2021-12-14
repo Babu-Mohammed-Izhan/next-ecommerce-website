@@ -4,16 +4,22 @@ interface priceRange {
   };
 }
 
-export interface CartProduct {
+export interface CardProduct {
+  data: {
+    node: {
+      title: string;
+      id: string;
+      handle: string;
+      priceRange: priceRange;
+    };
+  };
+}
+
+export interface Product {
   node: {
     title: string;
     id: string;
     handle: string;
     priceRange: priceRange;
   };
-}
-
-export interface Product {
-  name: string;
-  price: number;
 }

@@ -1,16 +1,16 @@
 import Image from "next/image";
 import { useState } from "react";
-import Card, { cardData } from "../../components/card";
-import { CartProduct } from "../../types";
+import Card from "../../components/card";
+import { Product } from "../../types";
 import { useAppDispatch } from "../../app/hook";
-import { addProduct } from "../../features/cart/cartSlice";
+import { addProduct, CartState } from "../../features/cart/cartSlice";
 import { useRouter } from "next/router";
 import { getAllProducts } from "../../shopify/shopify";
 
 interface ProductProps {
   name: string;
   price: number;
-  moreProducts: cardData[];
+  moreProducts: Product[];
 }
 
 const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
@@ -158,9 +158,10 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
         <div className="mt-16">
           <h3 className="text-gray-600 text-2xl font-medium">More Products</h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-            {moreProducts.map((p: any) => {
-              return <Card key={p.id} data={p} />;
-            })}
+            {moreProducts &&
+              moreProducts.map((p: Product) => {
+                return <Card key={p.node.id} data={p} />;
+              })}
           </div>
         </div>
       </div>
@@ -169,18 +170,14 @@ const ProductPage = ({ name, price, moreProducts }: ProductProps) => {
 };
 
 export async function getStaticProps(context: any) {
-  const data = await getAllProducts();
+  const data: Product[] = await getAllProducts();
 
-  const caseData = data.find(
-    (d: CartProduct) => d.node.id === context.params.id
-  );
-
-  console.log(caseData);
+  const caseData = data.find((d: Product) => d.node.id === context.params.id);
 
   return {
     props: {
-      name: `${caseData.node.title}`,
-      price: 12,
+      name: `${caseData ? caseData.node.title : "Undefined"}`,
+      price: caseData ? caseData.node.priceRange.maxVariantPrice.amount : 20,
       moreProducts: data,
     },
   };
