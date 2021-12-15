@@ -32,4 +32,5 @@ export interface CartProduct {
     priceRange: priceRange;
   };
   amount: number;
+  model: string;
 }
