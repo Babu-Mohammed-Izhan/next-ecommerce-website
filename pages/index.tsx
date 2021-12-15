@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Card from "../components/card";
-import { getAllProducts } from "../shopify/shopify";
+import { getAllProducts } from "../lib/shopify";
 import { Product } from "../types";
 
 const Home: NextPage = ({ moreProducts }: any) => {
