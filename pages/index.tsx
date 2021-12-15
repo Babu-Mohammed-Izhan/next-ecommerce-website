@@ -143,7 +143,6 @@ const Home: NextPage = ({ moreProducts }: any) => {
 
 export async function getStaticProps(context: any) {
   const data = await getAllProducts();
-  console.log(data);
 
   return {
     props: {

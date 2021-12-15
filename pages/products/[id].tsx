@@ -14,7 +14,7 @@ interface ProductProps {
 
 const ProductPage = ({ product, moreProducts }: ProductProps) => {
   const [amount, setAmount] = useState(1);
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("realme1");
 
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -34,25 +34,26 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
       addProduct({
         ...product,
         amount: amount,
+        model: phone,
       })
     );
   };
 
   const modelArray = [
-    "realme 1",
-    "realme 2",
-    "realme 3",
-    "realme 4",
-    "realme 5",
-    "realme 6",
-    "realme 7",
-    "realme 8",
-    "realme 9",
-    "realme 8i",
-    "realme 7i",
-    "realme 6i",
-    "realme 5i",
-    "realme 4i",
+    "realme1",
+    "realme2",
+    "realme3",
+    "realme4",
+    "realme5",
+    "realme6",
+    "realme7",
+    "realme8",
+    "realme9",
+    "realme8i",
+    "realme7i",
+    "realme6i",
+    "realme5i",
+    "realme4i",
   ];
 
   return (
