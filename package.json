@@ -10,10 +10,12 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.0",
     "@types/react-redux": "^7.1.20",
+    "@types/stripe": "^8.0.417",
     "next": "12.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-redux": "^7.2.6"
+    "react-redux": "^7.2.6",
+    "stripe": "^8.193.0"
   },
   "devDependencies": {
     "@types/node": "16.11.11",

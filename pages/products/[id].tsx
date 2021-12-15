@@ -5,7 +5,7 @@ import { Product } from "../../types";
 import { useAppDispatch } from "../../app/hook";
 import { addProduct, CartState } from "../../features/cart/cartSlice";
 import { useRouter } from "next/router";
-import { getAllProducts } from "../../shopify/shopify";
+import { getAllProducts } from "../../lib/shopify";
 
 interface ProductProps {
   product: Product;

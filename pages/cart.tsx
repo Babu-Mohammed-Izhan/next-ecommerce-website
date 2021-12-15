@@ -4,13 +4,18 @@ import Cartcard from "../components/cartcard";
 import Link from "next/link";
 import { CartProduct } from "../types";
 import { useRouter } from "next/router";
+import { checkoutCreate } from "../lib/stripe";
+
 const Cart = () => {
   const cart = useAppSelector(selectCart);
   const cartArray = cart.cart;
   console.log(cartArray);
   const router = useRouter();
 
-  const handleCheckout = async () => {};
+  const handleCheckout = async () => {
+    const checkout = checkoutCreate(cartArray);
+    console.log(checkout);
+  };
 
   return (
     <div className="p-4 px-5 py-5 w-11/12 m-auto ">

@@ -1,10 +1,9 @@
 import React from "react";
 import Card from "../../components/card";
-import { getAllProducts } from "../../shopify/shopify";
+import { getAllProducts } from "../../lib/shopify";
 import { Product } from "../../types";
 
 const Shop = ({ products }: any) => {
-  console.log(products);
   return (
     <div className="container mx-auto px-6">
       <h3 className="text-gray-700 text-2xl font-medium">All Cases</h3>
