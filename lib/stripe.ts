@@ -22,8 +22,8 @@ export const checkoutCreate = async (cart: CartProduct[]) => {
       };
     }),
     mode: "payment",
-    success_url: `${process.env.DOMAIN}/success`,
-    cancel_url: `${process.env.DOMAIN}/canceled`,
+    success_url: `success`,
+    cancel_url: `canceled`,
   });
 
   return session;
