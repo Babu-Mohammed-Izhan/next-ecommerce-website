@@ -19,8 +19,8 @@ async function ShopifyData(query: string) {
     });
 
     return data;
-  } catch (error) {
-    throw new Error("Products not fetched");
+  } catch (error: any) {
+    throw new Error(`${error.message}`);
   }
 }
 
@@ -54,32 +54,33 @@ export async function getAllProducts() {
   return allProducts;
 }
 
-export async function createCheckout(cart: CartProduct[]) {
-  const lineItemsObject = cart.map((item: CartProduct) => {
-    return `{
-      variantId: "${item.node.id}",
-      quantity:  "${item.amount}",
-      model: "${item.amount}"
-    }`;
-  });
+// export async function createCheckout(cart: CartProduct[]) {
+//   const lineItemsObject = cart.map((item: CartProduct) => {
+//     return `{
+//       variantId: "${item.node.id}",
+//       quantity: ${item.amount}
+//     }`;
+//   });
 
-  const query = `
-      mutation {
-        checkoutCreate(input: {
-          lineItems: [${lineItemsObject}]
-        }) {
-          checkout {
-            id
-            webUrl
-          }
-        }
-      }`;
+//   const query = `
+//       mutation {
+//         checkoutCreate(input: {
+//           lineItems: [${lineItemsObject}]
+//         }) {
+//           checkout {
+//             id
+//             webUrl
+//           }
+//         }
+//       }`;
 
-  const response = await ShopifyData(query);
+//   const response = await ShopifyData(query);
 
-  const checkout = response.data.checkoutCreate.checkout
-    ? response.data.checkoutCreate.checkout
-    : [];
+//   console.log(response);
 
-  return checkout;
-}
+//   const checkout = response.data.checkoutCreate.checkout
+//     ? response.data.checkoutCreate.checkout
+//     : [];
+
+//   return checkout;
+// }
