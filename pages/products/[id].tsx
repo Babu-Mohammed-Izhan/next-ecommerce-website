@@ -74,7 +74,7 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
               {product?.node.title}
             </h3>
             <span className="text-gray-500 mt-3">
-              $ {product?.node.priceRange.maxVariantPrice.amount}
+              ₹ {product?.node.priceRange.maxVariantPrice.amount}
             </span>
             <hr className="my-3" />
             <div className="mt-2">

@@ -1,13 +1,14 @@
-const Contact = () => {
+const Cancelled = () => {
   return (
     <div className="container w-11/12 mx-auto md:mt-20">
       <div className="flex items-start justify-center flex-col">
-        <h1 className="text-6xl font-bold py-6">Get in touch</h1>
+        <h1 className="text-6xl font-bold py-6">Sorry about that!</h1>
         <p className="pb-3 md:pr-64 text-gray-500">
-          Send in your queries using the contact form below!
+          If there are any queries or complaints, please send it using contact
+          form below.
         </p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 mt-20 shadow-2xl rounded">
+      <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 shadow-2xl rounded">
         <div className=" py-14 bg-gradient-to-br from-blue-500 to-purple-500 text-gray-100 rounded ">
           <div className="w-11/12 mx-auto">
             <h3 className="text-3xl pb-7">Contact Information</h3>
@@ -101,4 +102,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Cancelled;

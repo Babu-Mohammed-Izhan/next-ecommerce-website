@@ -34,7 +34,7 @@ const Card = (props: CardProduct) => {
       <div className="px-5 py-3">
         <h3 className="text-gray-700 uppercase">{node.title}</h3>
         <span className="text-gray-500 mt-2">
-          $ {node.priceRange.maxVariantPrice.amount}
+          ₹ {node.priceRange.maxVariantPrice.amount}
         </span>
       </div>
     </div>
