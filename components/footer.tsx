@@ -66,7 +66,7 @@ const Footer = () => {
                  font-semibold
                  "
             >
-              Casey
+              Casity
             </span>
           </Link>
           <p className="mt-2 text-sm text-gray-500">

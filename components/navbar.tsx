@@ -38,7 +38,7 @@ const Navbar = () => {
             hover:from-blue-400
           "
               >
-                Casey
+                Casity
               </a>
             </Link>
           </div>

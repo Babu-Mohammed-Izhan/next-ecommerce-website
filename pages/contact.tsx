@@ -4,24 +4,15 @@ const Contact = () => {
       <div className="flex items-start justify-center flex-col">
         <h1 className="text-6xl font-bold py-6">Get in touch</h1>
         <p className="pb-3 md:pr-64 text-gray-500">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi
-          hic voluptatum enim quidem doloremque nobis magni distinctio quia
-          possimus sapiente? Similique labore maxime nemo natus saepe.
-          Voluptates asperiores error odio!
+          Send in your queries using the contact form below!
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 mt-20 shadow-2xl rounded">
         <div className=" py-14 bg-gradient-to-br from-blue-500 to-purple-500 text-gray-100 rounded ">
           <div className="w-11/12 mx-auto">
             <h3 className="text-3xl pb-7">Contact Information</h3>
-            <p className="py-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-              ab ex tenetur corporis itaque, fuga soluta beatae minus dolores
-              non, dolorem temporibus aliquam id molestiae doloremque illo
-              consequatur commodi adipisci.
-            </p>
-            <p className="py-4">Phone: +91 99445-45113</p>
-            <p className="py-4">Email: babuizhan1234@gmail.com</p>
+            <p className="py-2">Phone: +91 99445-45113</p>
+            <p className="py-2">Email: babuizhan1234@gmail.com</p>
           </div>
         </div>
         <div className="w-11/12 mx-auto h-full grid py-14 px-3">
