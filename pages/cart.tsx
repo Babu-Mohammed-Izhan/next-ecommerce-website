@@ -18,11 +18,11 @@ const Cart = () => {
   };
 
   return (
-    <div className="p-4 px-5 py-5 w-11/12 m-auto ">
+    <div className="md:p-4 md:px-5 md:py-5 md:w-11/12 m-auto ">
       <div className=" p-5">
         <h1 className="text-2xl font-medium ">Shopping Cart</h1>
         {cartArray.length > 0 ? (
-          <div className=" p-5">
+          <div className=" md:p-5">
             {cartArray.map((p: CartProduct) => {
               return <Cartcard data={p} key={p.node.title} />;
             })}
