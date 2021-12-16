@@ -42,7 +42,7 @@ const Cartcard = ({ data }: cartCardType) => {
         <div className="pr-8 ">
           {" "}
           <span className="text-xs font-medium">
-            $ {data.node.priceRange.maxVariantPrice.amount}
+            ₹ {data.node.priceRange.maxVariantPrice.amount}
           </span>{" "}
         </div>
         <div>

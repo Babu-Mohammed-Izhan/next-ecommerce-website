@@ -1,12 +1,10 @@
 import { CartProduct } from "./../../types";
 import { NextApiResponse, NextApiRequest } from "next";
-
-const stripe = require("stripe")(`${process.env.STRIPE_PRIVATE_KEY}`);
-
 import Stripe from "stripe";
 
 const checkout = async (req: NextApiRequest, res: NextApiResponse) => {
-  const products = req.body;
+  const products = req.body.cart;
+  console.log(products);
 
   const stripe = new Stripe(`${process.env.STRIPE_PRIVATE_KEY}`, {
     apiVersion: "2020-08-27",
@@ -19,6 +17,31 @@ const checkout = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
+    shipping_address_collection: {
+      allowed_countries: ["IN"],
+    },
+    shipping_options: [
+      {
+        shipping_rate_data: {
+          type: "fixed_amount",
+          fixed_amount: {
+            amount: 0,
+            currency: "inr",
+          },
+          display_name: "Free shipping",
+          delivery_estimate: {
+            minimum: {
+              unit: "business_day",
+              value: 5,
+            },
+            maximum: {
+              unit: "business_day",
+              value: 7,
+            },
+          },
+        },
+      },
+    ],
     line_items: products.map((item: CartProduct) => {
       return {
         price_data: {
@@ -33,8 +56,8 @@ const checkout = async (req: NextApiRequest, res: NextApiResponse) => {
       };
     }),
     mode: "payment",
-    success_url: `${redirectURL}?status=success`,
-    cancel_url: `${redirectURL}?status=canceled`,
+    success_url: `${redirectURL}/success`,
+    cancel_url: `${redirectURL}/cancelled`,
   });
 
   res.json({ id: session.id });
