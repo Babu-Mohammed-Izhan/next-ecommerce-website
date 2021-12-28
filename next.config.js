@@ -2,7 +2,12 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com", "i.imgur.com", "res.cloudinary.com"],
+    domains: [
+      "images.unsplash.com",
+      "i.imgur.com",
+      "res.cloudinary.com",
+      "cdn.shopify.com",
+    ],
   },
   env: {
     SHOPIFY_STOREFRONT_ACCESSTOKEN: process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN,

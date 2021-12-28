@@ -11,6 +11,16 @@ export interface CardProduct {
       id: string;
       handle: string;
       priceRange: priceRange;
+      images: {
+        edges: [
+          {
+            node: {
+              id: string;
+              src: string;
+            };
+          }
+        ];
+      };
     };
   };
 }
@@ -21,6 +31,16 @@ export interface Product {
     id: string;
     handle: string;
     priceRange: priceRange;
+    images: {
+      edges: [
+        {
+          node: {
+            id: string;
+            src: string;
+          };
+        }
+      ];
+    };
   };
 }
 
@@ -30,6 +50,16 @@ export interface CartProduct {
     id: string;
     handle: string;
     priceRange: priceRange;
+    images: {
+      edges: [
+        {
+          node: {
+            id: string;
+            src: string;
+          };
+        }
+      ];
+    };
   };
   amount: number;
   model: string;

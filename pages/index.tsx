@@ -6,14 +6,17 @@ import { Product } from "../types";
 import Image from "next/image";
 
 const Home: NextPage = ({ moreProducts }: any) => {
+  const animecases = moreProducts.slice(0, 4);
+  const superherocases = moreProducts.slice(4, 8);
+
   const data = [
     {
       title: "Anime",
-      products: moreProducts,
+      products: animecases,
     },
     {
       title: "Superhero",
-      products: moreProducts,
+      products: superherocases,
     },
   ];
   return (

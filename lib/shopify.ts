@@ -33,6 +33,14 @@ export async function getAllProducts() {
           id
           handle
           title
+          images(first: 3) {
+            edges {
+              node {
+                id
+                src
+              }
+            }
+          }
           priceRange {
             maxVariantPrice {
               amount

@@ -61,13 +61,13 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
       <div className="container mx-auto px-6">
         <div className="md:flex md:items-center">
           <div className="w-full h-64 md:w-1/2 lg:h-96">
-            {/* <Image
+            <Image
               className="h-full w-full rounded-md object-cover max-w-lg mx-auto"
-              src="https://images.unsplash.com/photo-1578262825743-a4e402caab76?ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80"
-              alt="Nike Air"
+              src={product.node.images.edges[0].node.src}
+              alt="Product Images"
               width="1000px"
-              height="500px"
-            /> */}
+              height="800px"
+            />
           </div>
           <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
             <h3 className="text-gray-700 uppercase text-lg">
