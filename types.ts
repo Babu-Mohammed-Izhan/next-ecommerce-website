@@ -12,12 +12,14 @@ export interface CardProduct {
       handle: string;
       priceRange: priceRange;
       images: {
-        edges: {
-          node: {
-            id: string;
-            src: string;
-          };
-        };
+        edges: [
+          {
+            node: {
+              id: string;
+              src: string;
+            };
+          }
+        ];
       };
     };
   };
@@ -30,12 +32,14 @@ export interface Product {
     handle: string;
     priceRange: priceRange;
     images: {
-      edges: {
-        node: {
-          id: string;
-          src: string;
-        };
-      };
+      edges: [
+        {
+          node: {
+            id: string;
+            src: string;
+          };
+        }
+      ];
     };
   };
 }
@@ -47,12 +51,14 @@ export interface CartProduct {
     handle: string;
     priceRange: priceRange;
     images: {
-      edges: {
-        node: {
-          id: string;
-          src: string;
-        };
-      };
+      edges: [
+        {
+          node: {
+            id: string;
+            src: string;
+          };
+        }
+      ];
     };
   };
   amount: number;
