@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { CardProduct } from "../types";
+import Image from "next/image";
 
 const Card = (props: CardProduct) => {
   const router = useRouter();
@@ -13,6 +14,7 @@ const Card = (props: CardProduct) => {
       className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden mt-5"
       key={node.handle}
     >
+      <Image src={node.images.edges[0].node.src} />
       <div className="flex items-end justify-end h-56 w-full bg-cover">
         <button
           className="p-2 rounded-full bg-purple-600 text-white mx-5 -mb-4 hover:bg-purple-500 focus:outline-none focus:bg-purple-500"
