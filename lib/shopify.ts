@@ -61,6 +61,71 @@ export async function getAllProducts() {
   return allProducts;
 }
 
+export async function getAllCollections() {
+  const query = `
+  {
+    collections(first:5){
+      edges{
+        node{
+          id
+          handle
+        }
+      }
+    }
+  }
+  
+  `;
+
+  const response = await ShopifyData(query);
+
+  const allCollections = response.data.collections.products.edges
+    ? response.data.products.edges
+    : [];
+
+  return allCollections;
+}
+
+export async function getAllPoductCollection(handle: string) {
+  const query = `
+  {
+    collection(handle:"${handle}") {
+      products(first:5) {
+        edges {
+          node {
+            id
+            handle
+            title
+            images(first: 3) {
+              edges {
+                node {
+                  id
+                  src
+                }
+              }
+            }
+            priceRange {
+              maxVariantPrice {
+                amount
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
+  `;
+
+  const response = await ShopifyData(query);
+
+  const allCollections = response.data.collection.products.edges
+    ? response.data.collection.products.edges
+    : [];
+
+  return allCollections;
+}
+
 // export async function createCheckout(cart: CartProduct[]) {
 //   const lineItemsObject = cart.map((item: CartProduct) => {
 //     return `{

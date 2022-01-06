@@ -1,22 +1,19 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Card from "../components/card";
-import { getAllProducts } from "../lib/shopify";
+import { getAllProducts, getAllPoductCollection } from "../lib/shopify";
 import { Product } from "../types";
 import Image from "next/image";
 
-const Home: NextPage = ({ moreProducts }: any) => {
-  const animecases = moreProducts.slice(0, 4);
-  const superherocases = moreProducts.slice(4, 8);
-
+const Home: NextPage = ({ animeProducts, superheroProducts }: any) => {
   const data = [
     {
       title: "Anime",
-      products: animecases,
+      products: animeProducts,
     },
     {
       title: "Superhero",
-      products: superherocases,
+      products: superheroProducts,
     },
   ];
   return (
@@ -137,11 +134,14 @@ const Home: NextPage = ({ moreProducts }: any) => {
 };
 
 export async function getStaticProps(context: any) {
+  const animeData = await getAllPoductCollection("anime");
+  const superheroData = await getAllPoductCollection("superhero");
   const data = await getAllProducts();
 
   return {
     props: {
-      moreProducts: data,
+      animeProducts: animeData,
+      superheroProducts: superheroData,
     },
   };
 }
