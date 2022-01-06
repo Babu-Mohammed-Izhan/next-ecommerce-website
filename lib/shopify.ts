@@ -1,5 +1,3 @@
-import { CardProduct, CartProduct } from "../types";
-
 async function ShopifyData(query: string) {
   const URL = `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2022-01/graphql.json`;
 
@@ -125,34 +123,3 @@ export async function getAllPoductCollection(handle: string) {
 
   return allCollections;
 }
-
-// export async function createCheckout(cart: CartProduct[]) {
-//   const lineItemsObject = cart.map((item: CartProduct) => {
-//     return `{
-//       variantId: "${item.node.id}",
-//       quantity: ${item.amount}
-//     }`;
-//   });
-
-//   const query = `
-//       mutation {
-//         checkoutCreate(input: {
-//           lineItems: [${lineItemsObject}]
-//         }) {
-//           checkout {
-//             id
-//             webUrl
-//           }
-//         }
-//       }`;
-
-//   const response = await ShopifyData(query);
-
-//   console.log(response);
-
-//   const checkout = response.data.checkoutCreate.checkout
-//     ? response.data.checkoutCreate.checkout
-//     : [];
-
-//   return checkout;
-// }
