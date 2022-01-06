@@ -1,12 +1,12 @@
 import { CardProduct, CartProduct } from "../types";
 
 async function ShopifyData(query: string) {
-  const URL = `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2021-10/graphql.json`;
+  const URL = `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2022-01/graphql.json`;
 
   const options = {
     method: "POST",
     headers: {
-      "X-Shopify-Storefront-Access-Token": `${process.env.SHOPIFY_STOREFRONT_ACCESSTOKEN}`,
+      "X-Shopify-Storefront-Access-Token": `13621b6f6015e95d606a4eeceb25c02d`,
       Accept: "application/json",
       "Content-Type": "application/json",
     },
@@ -17,7 +17,6 @@ async function ShopifyData(query: string) {
     const data = await fetch(URL, options).then((response) => {
       return response.json();
     });
-
     return data;
   } catch (error: any) {
     throw new Error(`${error.message}`);
