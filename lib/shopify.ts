@@ -2,11 +2,11 @@ async function ShopifyData(query: string) {
   const URL = `https://${process.env.SHOPIFY_STORE_DOMAIN}/api/2022-01/graphql.json`;
 
   const options = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "X-Shopify-Storefront-Access-Token": `13621b6f6015e95d606a4eeceb25c02d`,
-      Accept: "application/json",
-      "Content-Type": "application/json",
+      'X-Shopify-Storefront-Access-Token': `13621b6f6015e95d606a4eeceb25c02d`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query }),
   };
@@ -21,10 +21,10 @@ async function ShopifyData(query: string) {
   }
 }
 
-export async function getAllProducts() {
+export async function getAllProducts(num: number) {
   const query = `
   {
-    products(first: 30) {
+    products(first:${num ? num : 30}) {
       edges {
         node {
           id
@@ -62,7 +62,7 @@ export async function getAllProducts() {
 export async function getAllCollections() {
   const query = `
   {
-    collections(first:5){
+    collections(first:4){
       edges{
         node{
           id
