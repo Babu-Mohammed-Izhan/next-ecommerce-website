@@ -47,7 +47,7 @@ const Cartcard = ({ data }: cartCardType) => {
             className="text-white bg-red-500 rounded px-3 py-1 hover:text-white hover:bg-red-700 font-medium"
             onClick={() => handleDelete()}
           >
-            Delete
+            Remove
           </button>{" "}
         </div>
       </div>

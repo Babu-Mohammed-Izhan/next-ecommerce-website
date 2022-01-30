@@ -1,11 +1,11 @@
-import Image from "next/image";
-import { useState } from "react";
-import Card from "../../components/card";
-import { Product } from "../../types";
-import { useAppDispatch } from "../../app/hook";
-import { addProduct, CartState } from "../../features/cart/cartSlice";
-import { useRouter } from "next/router";
-import { getAllProducts } from "../../lib/shopify";
+import Image from 'next/image';
+import { useState } from 'react';
+import Card from '../../components/card';
+import { Product } from '../../types';
+import { useAppDispatch } from '../../app/hook';
+import { addProduct, CartState } from '../../features/cart/cartSlice';
+import { useRouter } from 'next/router';
+import { getAllProducts } from '../../lib/shopify';
 
 interface ProductProps {
   product: Product;
@@ -14,14 +14,14 @@ interface ProductProps {
 
 const ProductPage = ({ product, moreProducts }: ProductProps) => {
   const [amount, setAmount] = useState(1);
-  const [phone, setPhone] = useState("realme1");
+  const [phone, setPhone] = useState('realme1');
 
   const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleOrder = () => {
     handleAddtoCart();
-    router.push("/cart");
+    router.push('/cart');
   };
 
   const handleModel = (e: any) => {
@@ -40,36 +40,36 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
   };
 
   const modelArray = [
-    "realme1",
-    "realme2",
-    "realme3",
-    "realme4",
-    "realme5",
-    "realme6",
-    "realme7",
-    "realme8",
-    "realme9",
-    "realme8i",
-    "realme7i",
-    "realme6i",
-    "realme5i",
-    "realme4i",
+    'realme1',
+    'realme2',
+    'realme3',
+    'realme4',
+    'realme5',
+    'realme6',
+    'realme7',
+    'realme8',
+    'realme9',
+    'realme8i',
+    'realme7i',
+    'realme6i',
+    'realme5i',
+    'realme4i',
   ];
 
   return (
     <main className="my-8">
       <div className="container mx-auto px-6">
         <div className="md:flex md:items-center">
-          <div className="w-full h-64 md:w-1/2 lg:h-96">
+          <div className="w-full md:w-1/2 lg:h-96">
             <Image
               className="h-full w-full rounded-md object-cover max-w-lg mx-auto"
               src={product.node.images.edges[0].node.src}
               alt="Product Images"
               width="1000px"
-              height="800px"
+              height="1000px"
             />
           </div>
-          <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
+          <div className="w-full max-w-lg mx-auto md:mt-5 mt-20 md:ml-8  md:w-1/2">
             <h3 className="text-gray-700 uppercase text-lg">
               {product?.node.title}
             </h3>
@@ -117,7 +117,7 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
                 </button>
               </div>
             </div>
-            <div className="mt-3">
+            <div className="mt-20">
               <label className="text-gray-700 text-sm" htmlFor="count">
                 Phone Model :
               </label>
@@ -157,7 +157,7 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
             </div>
           </div>
         </div>
-        <div className="mt-16">
+        <div className="mt-56">
           <h3 className="text-gray-600 text-2xl font-medium">More Products</h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             {moreProducts &&
@@ -172,20 +172,20 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
 };
 
 export async function getStaticProps(context: any) {
-  const data: Product[] = await getAllProducts();
+  const data: Product[] = await getAllProducts(30);
 
   const caseData = data.find((d: Product) => d.node.id === context.params.id);
 
   return {
     props: {
-      product: caseData ? caseData : "",
-      moreProducts: data,
+      product: caseData,
+      moreProducts: data.slice(0, 4),
     },
   };
 }
 
 export async function getStaticPaths() {
-  const data: Product[] = await getAllProducts();
+  const data: Product[] = await getAllProducts(30);
 
   const paths =
     data &&

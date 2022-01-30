@@ -4,7 +4,7 @@ const About = () => {
       <h1 className="font-bold text-3xl md:text-5xl lg:text-7xl my-12">
         Welcome to{" "}
         <strong className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-          Casey
+          Casity
         </strong>
       </h1>
       <p className="text-center">

@@ -70,8 +70,7 @@ const Footer = () => {
             </span>
           </Link>
           <p className="mt-2 text-sm text-gray-500">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
-            quam?
+            Beautiful Covers for your phones.
           </p>
         </div>
         <div

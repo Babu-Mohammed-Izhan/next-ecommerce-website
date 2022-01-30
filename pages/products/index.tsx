@@ -1,7 +1,7 @@
-import React from "react";
-import Card from "../../components/card";
-import { getAllProducts } from "../../lib/shopify";
-import { CartProduct, Product } from "../../types";
+import React from 'react';
+import Card from '../../components/card';
+import { getAllProducts } from '../../lib/shopify';
+import { CartProduct, Product } from '../../types';
 
 interface ProductList {
   products: CartProduct[];
@@ -23,7 +23,7 @@ const Shop = ({ products }: ProductList) => {
 };
 
 export async function getStaticProps(context: any) {
-  const data: CartProduct[] = await getAllProducts();
+  const data: CartProduct[] = await getAllProducts(30);
 
   return {
     props: {
