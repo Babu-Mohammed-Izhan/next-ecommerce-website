@@ -61,13 +61,17 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
       <div className="container mx-auto px-6">
         <div className="md:flex md:items-center">
           <div className="w-full md:w-1/2 lg:h-96">
-            {/* <Image
-              className="h-full w-full rounded-md object-cover max-w-lg mx-auto"
-              src={product.node.images.edges[0].node.src}
+            <Image
+              className="h-full w-full rounded-md object-contain max-w-lg mx-auto"
+              src={
+                product?.node.images.edges[0]
+                  ? product?.node.images.edges[0].node.src
+                  : ''
+              }
               alt="Product Images"
               width="1000px"
-              height="1000px"
-            /> */}
+              height="800px"
+            />
           </div>
           <div className="w-full max-w-lg mx-auto md:mt-5 mt-20 md:ml-8  md:w-1/2">
             <h3 className="text-gray-700 uppercase text-lg">
@@ -179,7 +183,7 @@ export async function getStaticProps(context: any) {
   return {
     props: {
       product: caseData,
-      moreProducts: data.slice(0, 4),
+      moreProducts: data.sort(() => Math.random() - 0.5).slice(0, 4),
     },
   };
 }
