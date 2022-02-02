@@ -7,7 +7,7 @@ const Contact = () => {
           Send in your queries using the contact form below!
         </p>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 mt-20 shadow-2xl rounded">
+      <div className="md:grid md:grid-cols-1 lg:grid-cols-2 mt-20 shadow-2xl rounded">
         <div className=" py-14 bg-gradient-to-br from-blue-500 to-purple-500 text-gray-100 rounded ">
           <div className="w-11/12 mx-auto">
             <h3 className="text-3xl pb-7">Contact Information</h3>
@@ -15,10 +15,10 @@ const Contact = () => {
             <p className="py-2">Email: babuizhan1234@gmail.com</p>
           </div>
         </div>
-        <div className="w-11/12 mx-auto h-full grid py-14 px-3">
+        <div className="w-11/12 mx-auto h-full md:grid py-14 px-3">
           <h1 className="text-2xl font-semibold pb-6">Send us a Message</h1>
-          <form>
-            <div className="grid grid-cols-2 gap-x-6 pb-4 w-10/12 md:w-full">
+          <form className="w-full">
+            <div className="grid md:grid-cols-2 md:gap-x-6 pb-4 w-11/12 md:w-full">
               <div className="flex flex-col">
                 <label
                   htmlFor="firstname"
@@ -48,7 +48,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-x-6 pb-4 w-10/12 md:w-full">
+            <div className="flex flex-col md:grid md:grid-cols-2 md:gap-x-6 pb-4 w-11/12 md:w-full">
               <div className="flex flex-col ">
                 <label htmlFor="email" className=" text-lg font-semibold pb-2">
                   Email
@@ -72,7 +72,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-col pb-4 w-10/12 md:w-full">
+            <div className="flex flex-col pb-4 w-11/12 md:w-full">
               <label htmlFor="subject" className="text-lg font-semibold pb-2">
                 Subject
               </label>
@@ -83,7 +83,7 @@ const Contact = () => {
                 className="border-gray-300 border-solid border-2 rounded  py-1 px-2"
               />
             </div>
-            <div className="flex flex-col w-10/12 md:w-full">
+            <div className="flex flex-col w-11/12 md:w-full ">
               <label htmlFor="message" className="text-lg font-semibold pb-2">
                 Message
               </label>
