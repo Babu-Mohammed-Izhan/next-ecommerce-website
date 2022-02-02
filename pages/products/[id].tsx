@@ -64,8 +64,8 @@ const ProductPage = ({ product, moreProducts }: ProductProps) => {
             <Image
               className="h-full w-full rounded-md object-contain max-w-lg mx-auto"
               src={
-                product.node.images.edges[0].node.src
-                  ? product.node.images.edges[0].node.src
+                product?.node.images.edges[0]
+                  ? product?.node.images.edges[0].node.src
                   : ''
               }
               alt="Product Images"
