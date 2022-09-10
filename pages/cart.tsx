@@ -1,10 +1,10 @@
-import { selectCart } from "../features/cart/cartSlice";
-import { useAppSelector } from "../app/hook";
-import Cartcard from "../components/cartcard";
-import Link from "next/link";
-import { CartProduct } from "../types";
-import { useRouter } from "next/router";
-import { checkoutCreate } from "../lib/stripe";
+import { selectCart } from '../features/cart/cartSlice';
+import { useAppSelector } from '../app/hook';
+import Cartcard from '../components/cartcard';
+import Link from 'next/link';
+import { CartProduct } from '../types';
+import { useRouter } from 'next/router';
+import { checkoutCreate } from '../lib/stripe';
 
 const Cart = () => {
   const cart = useAppSelector(selectCart);
@@ -28,22 +28,22 @@ const Cart = () => {
             })}
             <div className="flex justify-between items-center mt-6 pt-6 border-t">
               <div className="flex items-center">
-                {" "}
-                <i className=" text-sm pr-2"></i>{" "}
+                {' '}
+                <i className=" text-sm pr-2"></i>{' '}
                 <Link href="/" passHref>
                   <span className="text-md font-medium text-purple-500 cursor-pointer">
                     Continue Shopping
                   </span>
-                </Link>{" "}
+                </Link>{' '}
               </div>
               <div className="flex flex-col">
-                {" "}
+                {' '}
                 <div className="flex justify-center items-end">
                   <span className="text-sm font-medium text-gray-400 mr-1">
                     Subtotal:
-                  </span>{" "}
+                  </span>{' '}
                   <span className="text-lg font-bold text-gray-800 ">
-                    ${" "}
+                    ₹{' '}
                     {cartArray
                       .map(
                         (a) =>
@@ -51,7 +51,7 @@ const Cart = () => {
                           Number(a.amount)
                       )
                       .reduce((t, c) => c + t)}
-                  </span>{" "}
+                  </span>{' '}
                 </div>
                 <button
                   className="mt-4 h-8 w-full bg-purple-500 rounded focus:outline-none text-white hover:bg-purple-600"
